@@ -15,17 +15,6 @@ class Agent(object):
 
         self.q_table = defaultdict(lambda: np.zeros(self.num_action_space))
 
-        def choose_action(self, state):
-            if np.random.uniform() < self.epsilon:
-                action = np.random.choice(self.num_action_space)
-            else:
-                # train agent using Q-learning algorithm
-                q_vals = self.q_table[state]
-                perm_actions = np.random.permutation(self.num_action_space)
-                q_vals = [q_vals[a] for a in perm_actions]
-                perm_q_argmax = np.argmax(q_vals)
-                action = perm_actions[perm_q_argmax]
-
     def choose_action(self, state):
         """choose action at current state by exploring or exploit depending on epsilon value"""
         if np.random.uniform() < self.epsilon:
